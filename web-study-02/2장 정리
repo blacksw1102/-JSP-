@@ -35,3 +35,15 @@ contentType내의 charset
 pageEncoding
 -JSP 소스코드의 캐릭터셋을 의미
 
+사용자가 폼에 입력한 데이터가 유효해야만 이를 서버에서 정상 처리할 수 있기 때문에 서버로 보내기 전에 입력된 데이터가 유효한지(올바른지)
+판단하여 유효하지 않으면 사용자가 다시 데이터를 입력하도록 유도해야 한다.
+
+출력할 한글 데이터 값 깨짐 방지
+-서블릿에서 response.setContentType("text/html;charset=UTF-8"); 을 입력해준다.
+-JSP의 첫줄을 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>로 수정해준다.
+
+get방식으로 입력 받은 한글 데이터 값 깨짐 방지
+-서버 설정 파일인 server.xml 파일에서 <Connector> 태그를 찾아 URIEncoding="UTF-8"을 추가해준다.
+
+post방식으로 입력 받은 한글 데이터 값 깨짐 방지
+-서블릿에서 request.setCharacterEncoding("UTF-8"); 를 입력해준다.
